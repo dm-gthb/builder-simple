@@ -41,6 +41,8 @@ gulp.task('clean', function() {
     return del.sync('dist');
 });
 
+gulp.task('default', ['watch']);
+
 
 gulp.task('build', ['clean', 'img', 'sass'], function() {
     var buildCss = gulp.src('src/css/style.css')
@@ -55,3 +57,4 @@ gulp.task('build', ['clean', 'img', 'sass'], function() {
     var buildHtml = gulp.src('src/*.html') 
     .pipe(gulp.dest('dist'));
 });
+
