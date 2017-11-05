@@ -8,11 +8,11 @@ var gulp         = require('gulp'),
     autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function(){
-  return gulp.src('src/scss/**/*.scss')
-    .pipe(sass())                                                                                                                                                     
-    .pipe(autoprefixer({ browsers: ['last 2 version'] }))                          
-    .pipe(gulp.dest('src/css/'))                  
-    .pipe(browserSync.stream());                           
+  return gulp.src('src/scss/style.scss')
+    .pipe(sass())
+    .pipe(autoprefixer({ browsers: ['last 2 version'] }))
+    .pipe(gulp.dest('src/css/'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('browser-sync', function() {
@@ -31,30 +31,29 @@ gulp.task('watch', ['browser-sync', 'sass'], function() {
 
 
 gulp.task('img', function() {
-	return gulp.src('src/img/*')
-	.pipe(imagemin())
-	.pipe(gulp.dest('dist/img'));
+  return gulp.src('src/img/*')
+  .pipe(imagemin())
+  .pipe(gulp.dest('dist/img'));
 });
 
 
 gulp.task('clean', function() {
-    return del.sync('dist');
+  return del.sync('dist');
 });
 
 gulp.task('default', ['watch']);
 
 
 gulp.task('build', ['clean', 'img', 'sass'], function() {
-    var buildCss = gulp.src('src/css/style.css')
-    .pipe(gulp.dest('dist/css'))
+  var buildCss = gulp.src('src/css/style.css')
+  .pipe(gulp.dest('dist/css'))
 
-    var buildFonts = gulp.src('src/fonts/**/*') 
-    .pipe(gulp.dest('dist/fonts'))
+  var buildFonts = gulp.src('src/fonts/**/*')
+  .pipe(gulp.dest('dist/fonts'))
 
-    var buildJs = gulp.src('src/js/**/*') 
-    .pipe(gulp.dest('dist/js'))
+  var buildJs = gulp.src('src/js/**/*')
+  .pipe(gulp.dest('dist/js'))
 
-    var buildHtml = gulp.src('src/*.html') 
-    .pipe(gulp.dest('dist'));
+  var buildHtml = gulp.src('src/*.html')
+  .pipe(gulp.dest('dist'));
 });
-
