@@ -1,6 +1,11 @@
+@import 'settings';
+@import 'foundation';
+
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+
 // @import 'fonts.scss';
 // @import 'variables.scss';
 // @import 'mixins.scss';
 // @import 'common.scss';
-
 // @import './src/blocks/page/page.scss';
